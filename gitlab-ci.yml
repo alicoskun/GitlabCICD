@@ -1,0 +1,16 @@
+image: docker
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - test
+
+build:
+    stage: build
+    script:
+        - "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build"
+
+after_script:
+  - "docker ps"
