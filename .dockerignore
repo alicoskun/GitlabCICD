@@ -1,0 +1,11 @@
+.dockerignore
+.env
+.git
+.gitignore
+.gitattributes
+.vs
+.vscode
+Dockerfile
+docker-compose*
+*/bin
+*/obj
