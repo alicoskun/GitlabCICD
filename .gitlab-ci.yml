@@ -18,7 +18,7 @@ build:
     - echo ${CI_REGISTRY_PASSWORD} | docker login ${CI_REGISTRY} --username ${CI_REGISTRY_USER} --password-stdin
   script:
     - docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
-    - docker commit ${CI_REGISTRY_USER}/${CI_REGISTRY_CONTAINER_NAME}
+    - docker commit ${CI_REGISTRY_CONTAINER_NAME} ${CI_REGISTRY_USER}/${CI_REGISTRY_CONTAINER_NAME}
     - docker push ${CI_REGISTRY_USER}/${CI_REGISTRY_CONTAINER_NAME}
   after_script:
     - docker logout ${CI_REGISTRY}
