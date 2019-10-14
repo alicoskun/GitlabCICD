@@ -6,7 +6,7 @@ services:
     container_name: ci-cd-webapp
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:5005 #;https://+:6001
+      - ASPNETCORE_URLS=http://+:5005 #;https://+:5006
     restart: always
     ports:
       - "5005:5005"
