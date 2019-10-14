@@ -15,13 +15,12 @@ build:
     - master
   stage: build
   before_script:
-    - docker login registry.gitlab.com -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
+    - docker login ${CI_REGISTRY} -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD}
   script:
     - "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build"
-    - docker push ${CI_REGISTRY}/${CI_REGISTRY_IMAGE}:latest
-
-   after_script:
-     - docker logout ${CI_REGISTRY}
-     - "docker ps"
-   tags:
-     - docker
+    - docker push ${CI_REGISTRY_IMAGE}
+  after_script:
+    - docker logout ${CI_REGISTRY}
+    - "docker ps"
+  tags:
+    - docker
